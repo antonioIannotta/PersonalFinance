@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:mongo_dart/mongo_dart.dart';
 import 'package:personal_finance/models/category/debt_category.dart';
 import 'package:personal_finance/services/mongo/mongo.dart';
@@ -22,7 +24,7 @@ class DebtController {
     });
   }
 
-  static Debt retrieveDebtByCategory(String category) {
+  static Debt retrieveDebtByCategory(category) {
     return _returnDebtFromDocument(debtCollection.find({"category":category}) as Map);
   }
 
