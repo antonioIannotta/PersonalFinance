@@ -1,0 +1,23 @@
+enum Category {
+  grocery,
+  eatOut,
+  savings,
+  salary,
+  clothes,
+  gift,
+  travel,
+  house,
+  technology,
+  condom,
+  rent,
+  laundry,
+  car,
+  dentistry,
+  medicalCheck,
+  workFood,
+  carWashing,
+  barberShop,
+  medicine,
+  entertainment,
+  energy
+}

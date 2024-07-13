@@ -11,6 +11,11 @@ class Income {
     if (!(_isCategoryValid(_category, CategoryController.getCategories()) &&
         _isAmountValid(_amount) &&
         _isDescriptionValid(_description))) {
+      _id = _id;
+      _category = _category;
+      _amount = _amount;
+      _description = _description;
+    } else {
       throw ArgumentError();
     }
   }

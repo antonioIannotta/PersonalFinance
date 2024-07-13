@@ -1,0 +1,4 @@
+enum DebtCategory {
+  dentistry,
+  car
+}
