@@ -1,3 +1,6 @@
+import 'package:personal_finance/services/controller/category_controller.dart';
+import 'package:personal_finance/utils/utils.dart';
+
 class Income {
 
   late String _category;
@@ -8,9 +11,10 @@ class Income {
 
   Income(this._id, this._category, this._amount, this._description,
       this._dateTime) {
-    if (!(_isCategoryValid(_category, CategoryController.getCategories()) &&
-        _isAmountValid(_amount) &&
-        _isDescriptionValid(_description))) {
+    if (!(FinanceManagementUtils.isCategoryValid(_category,
+        CategoryController.getCategories()) &&
+        FinanceManagementUtils.isAmountValid(_amount) &&
+        FinanceManagementUtils.isDescriptionValid(_description))) {
       _id = _id;
       _category = _category;
       _amount = _amount;
@@ -34,10 +38,4 @@ class Income {
 
     DateTime get dateTime => _dateTime;
     set dateTime(DateTime value) => _dateTime = value;
-
-
-
-
-
-
 }

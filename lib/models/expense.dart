@@ -1,3 +1,6 @@
+import '../services/controller/category_controller.dart';
+import '../utils/utils.dart';
+
 class Expense {
 
   late double _amount;
