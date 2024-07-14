@@ -1,4 +1,4 @@
-import '../services/controller/category_controller.dart';
+import '../services/controller/category/category_controller.dart';
 import '../utils/utils.dart';
 
 class Expense {

@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:mongo_dart/mongo_dart.dart';
 
-import '../../models/income.dart';
-import '../mongo/mongo.dart';
+import '../../../models/income.dart';
+import '../../mongo/mongo.dart';
 
 class IncomeController {
 

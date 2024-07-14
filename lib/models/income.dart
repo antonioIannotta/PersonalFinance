@@ -1,4 +1,4 @@
-import 'package:personal_finance/services/controller/category_controller.dart';
+import 'package:personal_finance/services/controller/category/category_controller.dart';
 import 'package:personal_finance/utils/utils.dart';
 
 class Income {

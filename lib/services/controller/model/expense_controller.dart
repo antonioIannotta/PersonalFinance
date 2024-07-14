@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:mongo_dart/mongo_dart.dart';
 import 'package:personal_finance/models/expense.dart';
 
-import '../mongo/mongo.dart';
+import '../../mongo/mongo.dart';
 
 
 class ExpenseController {

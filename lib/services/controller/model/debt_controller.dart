@@ -4,7 +4,7 @@ import 'package:mongo_dart/mongo_dart.dart';
 import 'package:personal_finance/models/category/debt_category.dart';
 import 'package:personal_finance/services/mongo/mongo.dart';
 
-import '../../models/debt.dart';
+import '../../../models/debt.dart';
 
 class DebtController {
 
