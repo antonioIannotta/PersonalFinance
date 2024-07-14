@@ -9,7 +9,8 @@ import '../../models/debt.dart';
 class DebtController {
 
   static const collectionName = "Debt";
-  static DbCollection debtCollection = Mongo.getCollectionByName(collectionName);
+  static DbCollection debtCollection = Mongo
+      .getCollectionByName(collectionName);
 
   static void insertDebt(Debt debt) {
     debtCollection.insertOne({
@@ -24,9 +25,30 @@ class DebtController {
     });
   }
 
-  static Debt retrieveDebtByCategory(category) {
-    return _returnDebtFromDocument(debtCollection.find({"category":category}) as Map);
+  static Debt retrieveDebtByCategory(String category) {
+    return _returnDebtFromDocument(debtCollection
+        .find({"category":category}) as Map);
   }
+
+  static void payInstalments(int numberInstalments, String debtCategory,
+      DateTime dateTime) {
+    var debt = retrieveDebtByCategory(debtCategory);
+    double paymentAmount = debt.instalmentAmount * numberInstalments;
+    debt.remainingAmount = debt.remainingAmount - paymentAmount;
+    debt.remainingInstalments = debt.remainingInstalments - numberInstalments;
+    debt.instalmentAmount = (debt.remainingAmount / debt.remainingInstalments);
+    var updateMap = debt.paymentsDate;
+    updateMap[dateTime] = paymentAmount;
+
+    debtCollection.updateOne(where.eq("debt_category",
+        debtCategory.toLowerCase()),
+        modify.set("payments_date", updateMap)
+        .set("remaining_amount", debt.remainingAmount)
+        .set("remainingInstalments", debt.remainingInstalments)
+        .set("instalment_amount", debt.instalmentAmount));
+  }
+
+
 
   static Debt _returnDebtFromDocument(Map<dynamic, dynamic> document) {
     return Debt(double.parse(document["original_amount"]!),
@@ -34,7 +56,8 @@ class DebtController {
         int.parse(document["remaining_instalments"]!.toString()),
         document["description"]!.toString(),
         DebtCategory.returnCategoryFromString(document["debt_category"]!),
-        Map<String, DateTime>.from(document["payments_date"]!).cast<DateTime, double>(),
+        Map<String, DateTime>.from(document["payments_date"]!)
+            .cast<DateTime, double>(),
         double.parse(document["instalments_amount"]!));
   }
 }
