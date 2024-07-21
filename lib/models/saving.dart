@@ -2,13 +2,13 @@ import 'dart:ffi';
 
 import 'package:personal_finance/models/category/saving_category.dart';
 
-class Savings {
+class Saving {
 
   late SavingCategory _name;
   late double _targetAmount;
   late double _actualAmount = 0.0;
 
-  Savings(this._name, this._targetAmount, this._actualAmount);
+  Saving(this._name, this._targetAmount, this._actualAmount);
 
   SavingCategory get name => _name;
   set name(SavingCategory value) => _name = value;
