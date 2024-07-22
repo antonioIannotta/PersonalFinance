@@ -9,8 +9,9 @@ class Debt {
   late DebtCategory _debtCategory;
   late Map<DateTime, double> _paymentsDate;
   late double _instalmentAmount;
+  late String _id;
 
-  Debt(this._originalAmount, this._remainingAmount, this._remainingInstalments, this._description,
+  Debt(this._id, this._originalAmount, this._remainingAmount, this._remainingInstalments, this._description,
       this._debtCategory, this._paymentsDate, this._instalmentAmount) {
     _originalAmount = _originalAmount;
     _remainingAmount = _remainingAmount;
@@ -37,6 +38,8 @@ class Debt {
 
   String get description => _description;
 
+  String get id => _id;
+
   set description(String value) => _description = value;
 
   set debtCategory(DebtCategory value) => _debtCategory = value;
@@ -44,5 +47,7 @@ class Debt {
   set remainingAmount(double value) => _remainingAmount = value;
 
   set remainingInstalments(int value) => _remainingInstalments = value;
+
+  set id(String value) => _id = value;
 
 }

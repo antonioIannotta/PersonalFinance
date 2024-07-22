@@ -15,7 +15,7 @@ class ExpenseController {
 
   static void insertExpense(Expense expense) {
     expenseCollection.insertOne({
-      "id": Random().nextInt(10000000000),
+      "id": expense.id,
       "category": expense.category,
       "amount": expense.amount,
       "description": expense.description,
@@ -51,4 +51,28 @@ class ExpenseController {
     }).forEach((expense) => expenseListByCategory.add(expense));
     return expenseListByCategory;
   }
+
+  static void updateExpenseAmount(String id, double amount) {
+    expenseCollection.updateOne(where.eq("id", id),
+        modify.set("amount", amount.toString()));
+  }
+
+  static void updateDescription(String id, String description)  {
+    expenseCollection.updateOne(where.eq("id", id),
+        modify.set("description", description));
+  }
+
+  static void updateCategory(String id, String category) {
+    expenseCollection.updateOne(where.eq("id", id),
+        modify.set("category", category));
+  }
+
+  static void updateDate(String id, DateTime dateTime) {
+    expenseCollection.updateOne(where.eq("id", id),
+        modify.set("day", dateTime.day)
+        .set("month", dateTime.month)
+        .set("year", dateTime.year)
+    );
+  }
+
 }

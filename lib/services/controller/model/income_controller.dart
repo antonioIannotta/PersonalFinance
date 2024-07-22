@@ -13,7 +13,7 @@ class IncomeController {
 
   static void insertIncome(Income income) {
     incomeCollection.insertOne({
-      "id": Random().nextInt(10000000000),
+      "id": income.id,
       "category": income.category,
       "amount": income.amount,
       "description": income.description,
@@ -36,6 +36,29 @@ class IncomeController {
     incomeCollection.find({"year":year.toString(),"month":month.toString()})
     .forEach((income) => incomeListByYearAndMonth.add(income));
     return incomeListByYearAndMonth;
+  }
+
+  static void updateAmount(String id, double amount) {
+    incomeCollection.updateOne(where.eq("id", id), modify
+        .set("amount", amount.toString()));
+  }
+
+  static void updateDescription(String id, String description) {
+    incomeCollection.updateOne(where.eq("id", id), modify
+        .set("description", description));
+  }
+
+  static void updateCategory(String id, String category) {
+    incomeCollection.updateOne(where.eq("id", id), modify
+        .set("category", category));
+  }
+
+  static void updateDateTime(String id, DateTime dateTime) {
+    incomeCollection.updateOne(where.eq("id", id), modify
+        .set("day", dateTime.day)
+        .set("month", dateTime.month)
+        .set("year", dateTime.year)
+    );
   }
 
 }

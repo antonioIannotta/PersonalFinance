@@ -4,7 +4,7 @@ import 'package:personal_finance/utils/utils.dart';
 class Income {
 
   late String _category;
-  late int _id;
+  late String _id;
   late double _amount;
   late String _description;
   late DateTime _dateTime;
@@ -27,8 +27,8 @@ class Income {
     String get category => _category;
     set category(String value) => _category = value;
 
-    int get id => _id;
-    set id(int id) => _id = id;
+    String get id => _id;
+    set id(String id) => _id = id;
 
     double get amount => _amount;
     set amount(double value) => _amount = value;

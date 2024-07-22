@@ -14,7 +14,7 @@ class DebtController {
 
   static void insertDebt(Debt debt) {
     debtCollection.insertOne({
-      "_id":Random.secure().nextInt(1000000000000000),
+      "_id":debt.id,
       "original_amount":debt.originalAmount.toString(),
       "remaining_amount":debt.remainingAmount.toString(),
       "remaining_instalments":debt.remainingInstalments.toString(),
@@ -40,8 +40,8 @@ class DebtController {
     var updateMap = debt.paymentsDate;
     updateMap[dateTime] = paymentAmount;
 
-    debtCollection.updateOne(where.eq("debt_category",
-        debtCategory.toLowerCase()),
+    debtCollection.updateOne(where.eq("id",
+        debt.id),
         modify.set("payments_date", updateMap)
         .set("remaining_amount", debt.remainingAmount)
         .set("remainingInstalments", debt.remainingInstalments)
@@ -51,7 +51,7 @@ class DebtController {
 
 
   static Debt _returnDebtFromDocument(Map<dynamic, dynamic> document) {
-    return Debt(double.parse(document["original_amount"]!),
+    return Debt(document["id"],double.parse(document["original_amount"]!),
         double.parse(document["remaining_amount"]!.toString()),
         int.parse(document["remaining_instalments"]!.toString()),
         document["description"]!.toString(),

@@ -7,12 +7,14 @@ class Expense {
   late String _category;
   late String _description;
   late DateTime _dateTime;
+  late String _id;
 
-  Expense(this._category, this._description, this._amount, this._dateTime) {
+  Expense(this._id,this._category, this._description, this._amount, this._dateTime) {
     if (FinanceManagementUtils.isCategoryValid(
         category, CategoryController.getCategories()) &&
         FinanceManagementUtils.isAmountValid(amount) &&
         FinanceManagementUtils.isDescriptionValid(description)) {
+      _id = _id;
       _category = _category;
       _description = _description;
       _amount = _amount;
@@ -33,4 +35,7 @@ class Expense {
 
   DateTime get dateTime => _dateTime;
   set dateTime(DateTime value) => _dateTime = value;
+
+  String get id => _id;
+  set id(String value) => _id = value;
 }
