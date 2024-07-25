@@ -11,7 +11,7 @@ class Expense extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {
             // Navigate to the second screen using a named route.
-            Navigator.pushNamed(context, '/saving');
+            Navigator.pushNamed(context, '/savings');
           },
         child: const Text("Go to Savings")
         )
