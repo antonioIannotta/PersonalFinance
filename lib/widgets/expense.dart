@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'menu.dart';
+
 class Expense extends StatelessWidget {
   const Expense({super.key});
 
@@ -7,13 +9,11 @@ class Expense extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Expenses")),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Navigate to the second screen using a named route.
-            Navigator.pushNamed(context, '/savings');
-          },
-        child: const Text("Go to Savings")
+      body: const Center(
+        child: Column(
+         children: [
+           AnimatedMenuButton()
+            ]
         )
       )
     );
