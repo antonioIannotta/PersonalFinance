@@ -8,14 +8,8 @@ class Income extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Income")),
-      body: const Center(
-        child: Column(
-         children: [
-           AnimatedMenuButton()
-            ]
-        )
-      )
+      appBar: AppBar(title: const Text("Income"), centerTitle: true),
+      body: const Center()
     );
   }
 

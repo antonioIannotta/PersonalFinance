@@ -8,14 +8,7 @@ class Expense extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Expenses")),
-      body: const Center(
-        child: Column(
-         children: [
-           AnimatedMenuButton()
-            ]
-        )
-      )
-    );
+      appBar: AppBar(title: const Text("Expenses"), centerTitle: true),
+      body: const Center(),);
   }
 }

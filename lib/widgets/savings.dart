@@ -8,13 +8,8 @@ class Saving extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Savings")),
+      appBar: AppBar(title: const Text("Savings"), centerTitle: true),
       body: const Center(
-        child: Column(
-         children: [
-           AnimatedMenuButton()
-            ]
-        )
       )
     );
   }

@@ -11,6 +11,66 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const TabBarMenu(),
+    );
+  }
+
+}
+
+class TabBarMenu extends StatelessWidget {
+  const TabBarMenu({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      initialIndex: 0,
+      length: 4,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Personal Finance'), centerTitle: true,
+          bottom: const TabBar(
+            tabs: <Widget>[
+              Tab(
+                text: "Home Page",
+              ),
+              Tab(
+                text: "Income",
+              ),
+              Tab(
+                text: "Expenses",
+              ),
+              Tab(
+                text: "Savings",
+              ),
+            ],
+          ),
+        ),
+        body: const TabBarView(
+          children: <Widget>[
+            Center(
+              child: HomePage(),
+            ),
+            Center(
+              child: Income(),
+            ),
+            Center(
+              child: Expense(),
+            ),
+            Center(
+              child: Saving(),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+  /**
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -25,5 +85,4 @@ class MyApp extends StatelessWidget {
         '/savings': (context) => const Saving(),
       },
     );
-  }
-}
+  }**/
