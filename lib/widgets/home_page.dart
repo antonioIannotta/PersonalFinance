@@ -46,11 +46,7 @@ class HomePage extends StatelessWidget {
 
             ),
             //const SizedBox(height: 8),
-            //const SizedBox(height: 8),
-            Container(
-              padding: const EdgeInsets.fromLTRB(100, 1, 1, 50),
-              child: const Text("Menu"),
-            ),
+            //const SizedBox(height: 8)
             Container(
               padding: const EdgeInsets.fromLTRB(100, 1, 1, 50),
               child: ElevatedButton(
@@ -83,7 +79,7 @@ class HomePage extends StatelessWidget {
   Map<String, double> _createDataMap() {
     Map<String, double> map = HashMap();
     for (Category c in Category.values) {
-      map[c.toString()] = 10.0;
+      map[c.name] = 10.0;
     }
     return map;
   }
