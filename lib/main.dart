@@ -32,6 +32,7 @@ class TabBarMenu extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Personal Finance'), centerTitle: true,
+          foregroundColor: Colors.blue,
           bottom: const TabBar(
             tabs: <Widget>[
               Tab(

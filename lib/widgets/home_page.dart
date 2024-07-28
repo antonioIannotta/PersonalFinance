@@ -1,5 +1,9 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
+import 'package:personal_finance/models/category/category.dart';
 import 'package:personal_finance/widgets/menu.dart';
+import 'package:pie_chart/pie_chart.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -7,69 +11,61 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Home Page"), centerTitle: true),
+      appBar: AppBar(title: const Text("Home Page"), centerTitle: true,
+      foregroundColor: Colors.blue),
       body: Center(
         child: ListView(
-          scrollDirection: Axis.vertical,
+          //scrollDirection: Axis.vertical,
           children: [
             // Net Income Card
-            _buildCard("Net Income"), // Replace with actual data
-
-            // Total Income Card with Date Picker
-            _buildCardWithDatePicker(context),
+            _buildCard("Net Income", "This is your Net Income", context), // Replace with actual data
 
             // Expenses Card
-            _buildCard("Expenses"), // Replace with actual data
+            _buildCard("Expenses", "This is the amount of your expenses", context), // Replace with actual data
           ],
         ),
       ),
     );
   }
 
- Widget _buildCard(String title,[String value = ""]) {
+ Widget _buildCard(String title, String subtitle, BuildContext context, [String value = ""]) {
+    var dataMap = _createDataMap();
     return Card(
       elevation: 4,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
+      //child: Padding(
+      //padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              title,
-              style: const TextStyle(fontSize: 18),
+            ListTile(
+              title: Text( title,
+              style: const TextStyle(fontSize: 18)
             ),
-            const SizedBox(height: 8),
-            const SizedBox(height: 8),
-            Text(
-              value,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+              subtitle: Text(subtitle,
+              style: const TextStyle(fontSize: 18)),
 
-  Widget _buildCardWithDatePicker(BuildContext context) {
-    return Card(
-      elevation: 4,
-      child: Padding(
-        padding: const EdgeInsets.all(60.0),
-        child: Column(
-          children: [
-            const Text(
-              "Total Income",
-              style: TextStyle(fontSize: 18),
             ),
-            ElevatedButton(
+            //const SizedBox(height: 8),
+            //const SizedBox(height: 8),
+            Container(
+              padding: const EdgeInsets.fromLTRB(100, 1, 1, 50),
+              child: const Text("Menu"),
+            ),
+            Container(
+              padding: const EdgeInsets.fromLTRB(100, 1, 1, 50),
+              child: ElevatedButton(
               onPressed: () => _selectDate(context),
-              child: Text("Select Date"),
+              child: const Text("Select Date"),
             ),
-            // Display income for the selected date here
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              alignment: Alignment.topRight,
+              child: PieChart(dataMap: dataMap),
+            )
           ],
         ),
-      ),
-    );
+      );
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -82,5 +78,13 @@ class HomePage extends StatelessWidget {
     if (picked != null) {
       // Handle the selected date (e.g., fetch income data for that date)
     }
+  }
+
+  Map<String, double> _createDataMap() {
+    Map<String, double> map = HashMap();
+    for (Category c in Category.values) {
+      map[c.toString()] = 10.0;
+    }
+    return map;
   }
 }
