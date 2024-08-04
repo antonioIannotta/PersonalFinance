@@ -1,3 +1,7 @@
+import 'dart:collection';
+
+import '../models/category/category.dart';
+
 class FinanceManagementUtils {
 
   static double minimumThreshold = 0.0;
@@ -17,5 +21,13 @@ class FinanceManagementUtils {
 
   static bool isDescriptionValid(String description) {
     return description.isNotEmpty;
+  }
+
+  static Map<String, double> createDataMap() {
+    Map<String, double> map = HashMap();
+    for (Category c in Category.values) {
+      map[c.name] = 10.0;
+    }
+    return map;
   }
 }
